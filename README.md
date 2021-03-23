@@ -76,20 +76,54 @@ $ poetry run pytest
  To build the image:
 
 1. To run the docker file in dev mode:	     
+```
 docker build --target development --tag todo-app:dev .
-To run the docker file in dev mode:      
+```
+
+To run the docker file in dev mode: 
+```     
 docker run --env-file ./.env -p 5000:5000 todo-app:dev
+```
 Then Navigate to localhost:5000 
    
-2. To build the docker file in prod mode:    
+2. To build the docker file in prod mode:  
+```  
 docker build --target production --tag todo-app:prod .
-   To run the docker file in prod mode:       
+```
+To run the docker file in prod mode:  
+```     
 docker run --env-file ./.env -p 5000:80 todo-app:prod
+```
 Then navigate to http://0.0.0.0:5000/
 
 3. To test local setup on UNIX:
+```
 docker run --env-file ./.env -p 5000:5000 --mount type=bind,source="$(pwd)",target=/app/ todo-app:dev
+```
+
+## Running the test folder in dockeer
+First build the docker image with a tag name my-test-image
+```
+docker build --target test --tag my-test-image .
+```
+Then run the tests with either of the following:
+--To run all 
+```
+docker run my-test-image tests
+```
+--To run selenium only while passing env variables for credentials
+```
+docker run --env-file ./.env my-test-image tests/test_selenium.py
+```
+--To run unit or ntegrationn test while passing file name
+```
+docker run --env-file ./.env my-test-image tests/test_view_model.py
+```
+
 
 ## Running the App  using Docker compose
+```
 docker-compose up --build
+```
+
 
