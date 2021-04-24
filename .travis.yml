@@ -9,6 +9,21 @@ script:
 - docker run my-test-image tests/test_view_model.py
 - docker run my-test-image tests/test_integration.py
 - docker run -e TRELLO_API_KEY -e TRELLO_API_TOKEN my-test-image tests/test_selenium.py
+
+# Get the latest image from Docker Hub (built by your CI pipeline)
+$ docker pull <olutiab>/<my-test-image .>
+# Tag it for Heroku
+$ docker tag <olutiab>/<my-test-image> registry.heroku.com/<heroku_app_name>/web
+# Push it to Heroku registry
+$ docker push registry.heroku.com/<heroku_app_name>/web
+
+-docker hub
+-docker login --username "$USER"  --password "$PWD"
+
+deploy:
+  skip_cleanup: true
+
+
 notifications:
   slack:
     rooms:

@@ -101,7 +101,7 @@ Then navigate to http://0.0.0.0:5000/
 docker run --env-file ./.env -p 5000:5000 --mount type=bind,source="$(pwd)",target=/app/ todo-app:dev
 ```
 
-## Running the test folder in dockeer
+## Running the test folder in docker
 First build the docker image with a tag name my-test-image
 ```
 docker build --target test --tag my-test-image .

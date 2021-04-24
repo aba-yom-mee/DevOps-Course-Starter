@@ -1,5 +1,5 @@
 #Using Python as base image
-FROM python:3.8-slim-buster as base
+FROM python:3.9.0-slim-buster as base
 
 
 ENV LIBRARY_PATH=/lib:/usr/lib
@@ -26,7 +26,8 @@ FROM base as production
 # Configure for production
 ENV FLASK_ENV=production
 ENTRYPOINT ["poetry", "run", "gunicorn", "app:app"]
-CMD ["--bind", "0.0.0.0:80"]
+# CMD ["--bind", "0.0.0.0:80"]
+CMD ["--bind", "0.0.0.0:$PORT"]
 EXPOSE 80
 
 FROM base as development
@@ -68,4 +69,6 @@ RUN FIREFOX_SETUP=firefox-setup.tar.bz2 && \
 ENTRYPOINT ["poetry", "run", "pytest"]
 
 
-
+# $ docker build --target <my_build_phase> --tag <image_tag> .  
+# $ docker push <image_tag> olutiab
+# # where <image_tag> has the format <user_name>/<image_name>:<tag>.
