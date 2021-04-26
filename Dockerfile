@@ -25,9 +25,8 @@ poetry install --no-dev --no-root
 FROM base as production
 # Configure for production
 ENV FLASK_ENV=production
-ENTRYPOINT ["poetry", "run", "gunicorn", "app:app"]
-CMD ["--bind", "0.0.0.0:80"]
-EXPOSE 80
+RUN chmod +x ./entry_point.sh
+ENTRYPOINT ./entry_point.sh
 
 FROM base as development
 # Configure for local development
