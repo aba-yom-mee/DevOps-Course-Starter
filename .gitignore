@@ -124,3 +124,5 @@ geckodriver.log
 settings.json
 .vscode/
 .venv/
+
+nohup.out
