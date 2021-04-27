@@ -9,21 +9,20 @@ env:
   - DOCKER_USERNAME=olutiab
   - DOCKER_PASSWORD=[secure]
   - secure: t6Vg7urDtCCNhB0BZevkDv/xIRTKfGFVM80FK709O1R8cb7IYer70S5loA+kvZR2KC882RVu7W/c2HgH632Qn1hyJEUApNF+CeLGxpWDl+D0KlfTkKtaEvwLbnGCf0K0ep08RCbedOoQAnxn4d9swinWi2FVsqUvnN2YNEkWBX8h5dd/FRHgYko6KMzl7uJq3zNRjqsSV+6DVwAS4GGoXMaBN/QV8Z3WYoX7o0vesNBZFao/aNKK6RDjjyT2rvDA6cDbYw56kJQ08dKTU82i4A1lz2SiDf65Atgntbe7Q5E2kaQJ8i9yZK4oJEnKpeJDU+8ApQVlp5iyxgnTIRStg31nVXcRqhNUjZKBPPQ0RYqEueItt4fEaBNYWtjCPN1ynY1p6EyCyZOmC26sfmzKgfqQ+rTK5kenH+O6NyYE2ED3moB26jgntIhLesB+ysNn7jJwVwLH0+hOHuG5kMB1BWuD1Zxa59uO9QzHFluNJo8cswO2gfhxCX1Z1hwlQMZRMmn2n1rMotUa4RzGWvj2144CnsN0kUsXaP4Dkm/v8PsPLhAQ8bpQenh29VNYhwtBcZ6gm8tCmCgzNLyAbEYRuUMhhyWxILHgaaBCQVfD+tJ5BF/hbgMIINz6V8bDpr/j14whhAUQVw79+smxrr2BQu2fkKVwxSysoV3v+pVZj+g=
-jobs:
-  include:
-  - stage: build docker image
-    script: 
+
+  script: 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build --target test --tag my-test-image .
-  - stage: test
+
   - docker run my-test-image tests/test_view_model.py
   - docker run my-test-image tests/test_integration.py
   - docker run -e TRELLO_API_KEY -e TRELLO_API_TOKEN my-test-image tests/test_selenium.py
-  
+
   - docker build --target production --tag olutiab/my-heroku-build .
   - docker pull olutiab/my-heroku-build .
   - docker tag olutiab/my-heroku-build registry.heroku.com/olutiab-todo-app/web
   - docker push registry.heroku.com/olutiab-todo-app/web
+
 deploy:
   provider: heroku
   api_key:
@@ -32,6 +31,7 @@ api_key:
 - docker login --username=olutiab --password=3b56d31d-a81a-4f4a-a5ae-dd35a05293e2
   registry.heroku.com
 - heroku container:release web --app olutiab-todo-app
+
 notifications:
   slack:
     rooms:
