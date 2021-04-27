@@ -16,9 +16,10 @@ env:
   - docker tag olutiab/my-heroku-build registry.heroku.com/olutiab-todo-app/web
   - docker push registry.heroku.com/olutiab-todo-app/web
 deploy:
+  provider: heroku
   api_key:
     secure: BOME+E9nCldgJ+LVZLQ8vmoKPi8vxs5GJ6r+QLJW2TlHBfKNxmhtqwCLa3JC/zIHjaEyPxnpWpPIbhiygxfYOrdkoLmf/FFcWd7T7ZZQHbgF7DuZJuWDBpQ1aLXClSMlJeGO6ArA8RpqonPnDS62D2IS5u0LltAQ2XEDt7Q8FrXgcKMznJLjuOoYDvtJnBJ7GciLyLwHYwewXvsYQCXYs4I89N2n5YJUDuDJjJgmb8V57ZZp4aFcdI/ptbsbclo2Gu/DnNAuXqgfR6GkGjmCRU9l4WIoYSlUeA7CSFqa7f7v9u42t8789P719mQmY9MObwR7aRCHhdHil7PBGge7v6IAVBNMkA+zUum+RadVszdW/3KwLYnRKapmLtGBgoE2txD35VpnbNubcsTLKMP/BQK26joApsRoXj30MpYccoGbigoFHMF3K0KpS19h8KkKpVHaxm6OSE8kwE3xm/aponG8gZPU6KORmoMmyuqta6mcu8lTfjRCdOvSyKD3Vkk86USZOnxziGH1JeztqJF2gAEggen9Si+crd5pf6Jti/mrZHg0mYm7FdzriXe2UCnywSraKGnjJK93nZ5jGGRiyuEXOQbHrvMBKGvgBS/pBsIk6S1dr4USDGgSrCBbRvsb4iucWT6zJfHTSKEPgaNkQPnTewVlh+KSNynOuQBc7Y8=
-provider: heroku
+
 api_key:
 - docker login --username=olutiab --password=3b56d31d-a81a-4f4a-a5ae-dd35a05293e2 registry.heroku.com
 - heroku container:release web --app olutiab-todo-app
