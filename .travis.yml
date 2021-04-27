@@ -1,35 +1,36 @@
 services:
 - docker
-
 env:
   global:
   - secure: TP9V3mSAnVJuzYmgAC2UOwXTCdp3aTGKf7i8hDqAZKe4WkVdSTLqksz4Z1/Ii5kEk3UrX46D0NjTy0wPLTRgHYdqybp1psQL394gw9VPADT/ZrZR1jl+MmqHQhg8ef2HnWSVG/upoSrEb3isEiwUDAwTizPEs1jR4OSQk5J/ZBFmykXassR8giF4zOLO2OQvl0H9L8eMB35/nWqS+vUHb1AdGE45ElOQ974tFra8sydSAx32vF6IzEDEJ45Iex+w/q1sq5WqiEeGjQlcwQDxuFcY1N2OiMDwLG4pD+efUeolU3OdK1qmZ0jU8rg8Jt2d4CEw+4cu1NbbKHbcsTAGVbAqXKjpdPePbsAs2H4pFjF7XoKlSn0QCoHuv4YTAL+81UNfq3Se2HwJtiufHNq80J3mTnZdybqxKN/Xl/oOJX2QzwqAQyay4Roab88PUKh2BKAOVtqfo0njdfzxMwUoF0DAP1E+FXu6h2Fvirlqf43VbJpidit7vOfBgKh0qjlWiYC21NPGJOxV4zwElvE6m2UyxRJegrOd45eoYNaccSasqtvxGb+p9QhhWtEk3T8P1bg8rMukYDegFoSlVCRGF5v9+sT0+jVk+yrd71EN2axX+JeLVMfFWVLN49yf0LtFISECCe/JJGgnFfLMoRLKImju6XXDHm/uuEs7i+INfb8=
   - secure: jChdlwrKObp67AjFLxv4pybk4vZQ3DzkydcNflqzlaxs9FxoBi5AQ+d7d7cNAITFWpTppdt07UC7V6h7rFTVsu9G5gkpDfI5j2e3KtDo3yiI2+TwxZilh2ZEl15WqwarYMXxvlMdGyaa+emciqyhR/VG3PfBUy2ZuSa5/nI8gZjo8LDmfH0/a4QopiM5c1qoniFjxDI0XwXXXiYs5mHGbjTQxfe0raEYjVT5qqGzCBgPSIFRFjhRJcJ8ww7Xdsz9xlMwONWqQT5gl6Be+h4n/0NhNLFuO9lWkxpEquXIxBQjpnf7eISt7O5ENH2gg5fdl8fdQxt2YSPuPrLcNLrMHIphaC41kZFx+WxBmTP3Sbwi6Pk/uSYE2TBmPrLPDkHR8a8SdQ3w0KJA1nB2x5wxtonuDlORgWeHQRn5uecvqPkyUI+L2P/pmSC976lg9g8tGU6uok6XkFSGo42I56G/wjYdzbmCZOYdG2jXDaEocNMyRtiztrgoZZ1nNfI87vQJ2LLjZ86T+LwvQoU3RJN0TYCYF2MSP1++IChrhIdjVTQAb9AE+nesnUaVVI4wcdleSK1AhVyFUr0d5jbTgTwd1M1DwoScGDtF4Faozy0e7K7dOPYj2mAQiEqhoFF07lkQWW52F76QzgHYBVUeOGTxYRCulSJIoxBiEU7AXGvOY0Y=
   - secure: mB/eLt7z9tpl4F9DKPWoDaDqeLNxSrdZl7AiE0hoc9Tz89b17Js56Jn+2seKqH2EOVvqZPJVt3Tvv0qwilwrqGhiw6S/8GpeRyzMc+UAoxIqGMoZJ3X33gjFxup516P3/HLj3EHzN9YZGNHczKRGDDLHmUXEH2EGAks6EhdKAare7T53NGN5un+x1aTAaLFGjplha2X0ckJAMprB1GkcWt/ZJTNoqV1M8HXZLJX+hrvtuEEGQWd2p5BjCbY3okV/xEhv5mbswqxyhMS0yLvMsaArJr67RSGvO94/2cxoYXrYHySS9T100vOnAvUo+tSUWfV50Jne+3vX+CuPYdxme9K8E8plZm5ceBxY+8EJNN78h5wOfZ+Ft0MwapX0QL3d2519DCBJL5bLbEi4amgCkUjtDJXMDbDg3veS5Uh1PItCjZcSWADOKLDxEwFXSddLjBSARolj9Y67R4VgResPj6/Gh3IOnK3n7cau6+Nn7gqMh5hgl2NaRr6NP/5rP9T7FT6OcdqnFHu+YkemmzzTxZm+14/BzKR+aBG1i1WoybaHfDYc71ynTeAMfWysUUVQmJnBf/gzj8Vz/b96W7SmmLmTfzQ8ZbeU2CCqgVVxsdvIWKlK/4gIjnYT5w6yhgC4XpKHSDrMJ+IpIxeuPzR81j9hroHjfhkzxELSjLjxbX8=
   - secure: epiUwtY61ipALmWhfo+0JkRTaItcu7ua8clX1GfoZYMlFl0RrKmQRfeDxXRBzugzGgdkhzFwj3eWJ2y0HKg8th1m81NvRHPLoNs3sz4r5dQabhPPQhc5uihmY2TfI75pixetnsn/1BMSrz4ld05bAemPS3yOtbdNQMSA4AjN7jfAHBopbSyNXAvzLS64ppmwMRFnQmstE1dp3q7xCyybVMkzV9styGspAoEP/DXYb+wIBMn/nP5SSKhZUfkGKBRclTXim9AjDSAtSISzgwYyqT/puNmBUe8A0byk/i4reOUdl1av8Oo7BgHkOwOyWPQAwfKAtLxj4Lo2AUqxukb06L7LY9xaMRw1MosoHcylsFyqqvFVe6YjCb4c1i6h8yrkzgcsow1IVc7d1iCxcesWaaSAMm+3FcIAvXlJ7b7lE6REJYv047HdKchyi92A4sav6Wj92VKNB9iakRXYsfWHJM6NO/5jAgqtpl6VPB3Iwo6fUB3qf60PsDaxAwCicAQzYw40QOsGLvjQ0wPVMYUga8EFiZO/vZP9StGExgq0+vZ8LK1BirQ+wGQdm7l1HUywlbT36YIBFol+7fE239NFxNLNEaQyXJjCg3Pe0HbHA9/rOLCCA5PBdpHSc5Dcj5S4sSgvgIar7/Vv42plcUJI3n28U/Ie3Wujc2flPHsAL0A=
- 
-  # - DOCKER_USERNAME=olutiab
-  # - DOCKER_PASSWORD=[secure]
-
-script:
-# - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker build --target test --tag my-test-image .
-- docker run my-test-image tests/test_view_model.py
-- docker run my-test-image tests/test_integration.py
-- docker run -e TRELLO_API_KEY -e TRELLO_API_TOKEN my-test-image tests/test_selenium.py
-- docker build --target production --tag olutiab/my-heroku-build .
-- docker pull olutiab/my-heroku-build .
-- docker tag olutiab/my-heroku-build registry.heroku.com/olutiab-todo-app/web
-- docker push registry.heroku.com/olutiab-todo-app/web
-
+  - DOCKER_USERNAME=olutiab
+  - DOCKER_PASSWORD=[secure]
+  - secure: t6Vg7urDtCCNhB0BZevkDv/xIRTKfGFVM80FK709O1R8cb7IYer70S5loA+kvZR2KC882RVu7W/c2HgH632Qn1hyJEUApNF+CeLGxpWDl+D0KlfTkKtaEvwLbnGCf0K0ep08RCbedOoQAnxn4d9swinWi2FVsqUvnN2YNEkWBX8h5dd/FRHgYko6KMzl7uJq3zNRjqsSV+6DVwAS4GGoXMaBN/QV8Z3WYoX7o0vesNBZFao/aNKK6RDjjyT2rvDA6cDbYw56kJQ08dKTU82i4A1lz2SiDf65Atgntbe7Q5E2kaQJ8i9yZK4oJEnKpeJDU+8ApQVlp5iyxgnTIRStg31nVXcRqhNUjZKBPPQ0RYqEueItt4fEaBNYWtjCPN1ynY1p6EyCyZOmC26sfmzKgfqQ+rTK5kenH+O6NyYE2ED3moB26jgntIhLesB+ysNn7jJwVwLH0+hOHuG5kMB1BWuD1Zxa59uO9QzHFluNJo8cswO2gfhxCX1Z1hwlQMZRMmn2n1rMotUa4RzGWvj2144CnsN0kUsXaP4Dkm/v8PsPLhAQ8bpQenh29VNYhwtBcZ6gm8tCmCgzNLyAbEYRuUMhhyWxILHgaaBCQVfD+tJ5BF/hbgMIINz6V8bDpr/j14whhAUQVw79+smxrr2BQu2fkKVwxSysoV3v+pVZj+g=
+jobs:
+  include:
+  - stage: build docker image
+    script: 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build --target test --tag my-test-image .
+  - stage: test
+  - docker run my-test-image tests/test_view_model.py
+  - docker run my-test-image tests/test_integration.py
+  - docker run -e TRELLO_API_KEY -e TRELLO_API_TOKEN my-test-image tests/test_selenium.py
+  - docker build --target production --tag olutiab/my-heroku-build .
+  - docker pull olutiab/my-heroku-build .
+  - docker tag olutiab/my-heroku-build registry.heroku.com/olutiab-todo-app/web
+  - docker push registry.heroku.com/olutiab-todo-app/web
 deploy:
   provider: heroku
   api_key:
     secure: BOME+E9nCldgJ+LVZLQ8vmoKPi8vxs5GJ6r+QLJW2TlHBfKNxmhtqwCLa3JC/zIHjaEyPxnpWpPIbhiygxfYOrdkoLmf/FFcWd7T7ZZQHbgF7DuZJuWDBpQ1aLXClSMlJeGO6ArA8RpqonPnDS62D2IS5u0LltAQ2XEDt7Q8FrXgcKMznJLjuOoYDvtJnBJ7GciLyLwHYwewXvsYQCXYs4I89N2n5YJUDuDJjJgmb8V57ZZp4aFcdI/ptbsbclo2Gu/DnNAuXqgfR6GkGjmCRU9l4WIoYSlUeA7CSFqa7f7v9u42t8789P719mQmY9MObwR7aRCHhdHil7PBGge7v6IAVBNMkA+zUum+RadVszdW/3KwLYnRKapmLtGBgoE2txD35VpnbNubcsTLKMP/BQK26joApsRoXj30MpYccoGbigoFHMF3K0KpS19h8KkKpVHaxm6OSE8kwE3xm/aponG8gZPU6KORmoMmyuqta6mcu8lTfjRCdOvSyKD3Vkk86USZOnxziGH1JeztqJF2gAEggen9Si+crd5pf6Jti/mrZHg0mYm7FdzriXe2UCnywSraKGnjJK93nZ5jGGRiyuEXOQbHrvMBKGvgBS/pBsIk6S1dr4USDGgSrCBbRvsb4iucWT6zJfHTSKEPgaNkQPnTewVlh+KSNynOuQBc7Y8=
 api_key:
-- docker login --username=olutiab --password=3b56d31d-a81a-4f4a-a5ae-dd35a05293e2 registry.heroku.com
+- docker login --username=olutiab --password=3b56d31d-a81a-4f4a-a5ae-dd35a05293e2
+  registry.heroku.com
 - heroku container:release web --app olutiab-todo-app
-
 notifications:
   slack:
     rooms:
