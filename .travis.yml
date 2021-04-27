@@ -19,6 +19,7 @@ jobs:
   - docker run my-test-image tests/test_view_model.py
   - docker run my-test-image tests/test_integration.py
   - docker run -e TRELLO_API_KEY -e TRELLO_API_TOKEN my-test-image tests/test_selenium.py
+  
   - docker build --target production --tag olutiab/my-heroku-build .
   - docker pull olutiab/my-heroku-build .
   - docker tag olutiab/my-heroku-build registry.heroku.com/olutiab-todo-app/web
