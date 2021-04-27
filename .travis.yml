@@ -9,23 +9,25 @@ env:
   - DOCKER_USERNAME=olutiab
   - DOCKER_PASSWORD=
   - secure: M0c6J193KYGEC2KdzSGuzs/05APm9SDzQOQ5Vq2cfxtb5pPOHoYjB1llA0056QHBcBjMJ/Md6o6mrQm4kLlXStczfphYb7KSM0em4KeQUhF0BE2TuS2EFEATy3rpIslfa+TeWxAGhIJegvMNGT99ec+4iBGcPRQYLmLu3AO2duC7YB0wU3YRYq5VuHPvL2JYi0qqeMrr29BlX0NHN18UaMGN2gPHQUDGH3RNKs4p3Bnb70tje4PRyZVhH+4wxakYdx47KBNziIdthfZ/lpYrWtDqfcWn+w3lUOjeadxMDYcZzPT7jycs5k6eLn+Js9QO1AdWPMvt7zdy7vmsUtqIhGIID0Sj6IW/fWk3B0P9z2IajbGHZbNWM8/NAw+mK30cWRe6LLR3m8dZ/YnHD2eZjG6N2E2g5EnIWpTis9GeEVGm9vHW/s6vRYO2VriD6Rc9hIuZrOC6piWN+MemXM8s9vhuScmYNh1XnDk76vBXhBeelv6ov8HRl1654LS3ydVem7UbHvX4299DsYdUq9H55gbPCIfNV9lUes2+CG+7mW7TMJGaIN1dzk3FEgiaTmEzHO36I1mNvaXjep0/UFS9NljZm/EfY0G0sUY968OCmhlEDTNhMhkshwAxjpv8SdsLs6+2Ywy8mHnqYH/fIsrIFG0AaiOaUPiXy9xJUxtkZTQ=
+  - HEROKU_API_KEY=3b56d31d-a81a-4f4a-a5ae-dd35a05293e2
+  - secure: d5LknQrfFdWLj3yRWdqnbb+3ajtgc+Vt0de+u3Qi++fj/S7+M77mKsYwHb1wea8QnfloHUT86jKj4lI5+itAVvzelMsLGOahknPO0eMCQyBT+4Wc3zKQHoUxwfCWHjF3d20iB09Sbt9CJ+TrXRExrdaU42tRLSDQWiH5LS9G8YLQ+kOYICFr9JWuDE4NTFnhIk5PwFtPbzx5FZwEchcbmSaqB8fExnl3XDKJxvdSX94asY2gMdypMoLnVEmHrbcHMUR9oHTjJUIx+z3DI0tLQIB9Hn9c1OBqKtvpCXmds/+WPqkPzJTaxrbcfPNvrguiGYas1paArVR8mebqfOXW6xyx0fsaLqtC4zj9P7CSvDGRAZltTIkJ7gt6RAseu2TUa+8BsMx0+iMFvl5FH/FbkiEltr0i8GK/cL8DrWMo6/MlNdnbdIRZilVELh2Mp41+CIZHx6oNaVivBpOR+m1rzRL2CkAsD7zwPwa1GRrtErq4pzkxIMFojNlHT67YJ2yKlJlyDsmHD3U5uMZX6XVkYaH3VxsuUNm8GBA2fT41/4LR7E2G6swyQC8MFk1U6i77yQvH/GrtCm1jbXMt8OrwXlTpqjcj55NGCx+6XpYFkS1yPR+ZIifwSKsus/bT2eV7UQ6YmQTdKYwf9WIEoQhNB5iT+PgEENen2Yevbcy3R6o=
 script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker pull olutiab/my-heroku-build
 - docker build --target test --tag my-test-image .
 - docker run my-test-image tests/test_view_model.py
 - docker run my-test-image tests/test_integration.py
 - docker run -e TRELLO_API_KEY -e TRELLO_API_TOKEN my-test-image tests/test_selenium.py
 - docker build --target production --tag olutiab/my-heroku-build .
-- docker pull olutiab/my-heroku-build .
 - docker tag olutiab/my-heroku-build registry.heroku.com/olutiab-todo-app/web
 - docker push registry.heroku.com/olutiab-todo-app/web
 deploy:
   provider: heroku
   api_key:
-    secure: BOME+E9nCldgJ+LVZLQ8vmoKPi8vxs5GJ6r+QLJW2TlHBfKNxmhtqwCLa3JC/zIHjaEyPxnpWpPIbhiygxfYOrdkoLmf/FFcWd7T7ZZQHbgF7DuZJuWDBpQ1aLXClSMlJeGO6ArA8RpqonPnDS62D2IS5u0LltAQ2XEDt7Q8FrXgcKMznJLjuOoYDvtJnBJ7GciLyLwHYwewXvsYQCXYs4I89N2n5YJUDuDJjJgmb8V57ZZp4aFcdI/ptbsbclo2Gu/DnNAuXqgfR6GkGjmCRU9l4WIoYSlUeA7CSFqa7f7v9u42t8789P719mQmY9MObwR7aRCHhdHil7PBGge7v6IAVBNMkA+zUum+RadVszdW/3KwLYnRKapmLtGBgoE2txD35VpnbNubcsTLKMP/BQK26joApsRoXj30MpYccoGbigoFHMF3K0KpS19h8KkKpVHaxm6OSE8kwE3xm/aponG8gZPU6KORmoMmyuqta6mcu8lTfjRCdOvSyKD3Vkk86USZOnxziGH1JeztqJF2gAEggen9Si+crd5pf6Jti/mrZHg0mYm7FdzriXe2UCnywSraKGnjJK93nZ5jGGRiyuEXOQbHrvMBKGvgBS/pBsIk6S1dr4USDGgSrCBbRvsb4iucWT6zJfHTSKEPgaNkQPnTewVlh+KSNynOuQBc7Y8=
+    secure: pxL7kmi1Xs5rvpkm/zAA7V6YXDo2DeFWZ5yrAvl3gsfZn4HFok5hBnW35+D66iEF9kD95VucfG8E2J12WL+5wP/kTwqTlAUjLczzi5XbaCLu+cjbIGOS8aJ6TQbK3NesXISQ0kKjufROs29XQtHLo9Dp+tMmU+pDSfDokGXwYGqopdrOqha09aa8P2CzKTGxqzZUfaOs2/Zy4xF1pAZ+t7KdAHUePHAMtIu7OLJg7dTQgkKmRK5wEbMlpadNoBtjVriuqGIXPwGnYHJwnBNXXm80jzWCUYb4/HYZGyIhZr7GPumEwfxs2pym702EM9fJzVz7mpe2rQeUbwki9T58yh7EgEH+FsxOH1ILZrK3EJnrfxvgMIa1616yAXe1r0Nk1rzFFhMzABuBwHE/RdIQWbUuFi4TAdU91pvYrc5drMQiiU/xkoGEcrnTVtAbYL7oggE9nQ9DYSekLr2Jg8V4y6kezrSVb4pG32OPkqUAo0ksBG9Kxn4F1kz+SBT8tuEuVIHdWTZDt6noBEh7TUuzzP2ObNC03PfMU81z4TG1VKPsrHSm2ZvFgOLtfi13ITtSjAbLBCe9SKNlNy3gP6q8sRjEkoLJ6/nr1VVh4dF151l+5Z0+wbVmjSk38Y6vyYOgCBMtfuWJWjcxLnLGOFjg7lVoSW3hrRJBKe3nKG9OdFw=
 api_key:
-- docker login --username=olutiab --password=3b56d31d-a81a-4f4a-a5ae-dd35a05293e2
-  registry.heroku.com
+- docker login --username=olutiab --password=3b56d31d-a81a-4f4a-a5ae-dd35a05293e2 registry.heroku.com
+- docker push registry.heroku.com/olutiab-todo-app/web
 - heroku container:release web --app olutiab-todo-app
 notifications:
   slack:
