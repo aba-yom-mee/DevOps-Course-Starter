@@ -13,33 +13,27 @@ env:
   HEROKU_API_KEY:
     secure: egahHV2U+VTHG8x2BQFjT4msLWUHqyrTDqeaZd7Ru9i5LDycnTabn07o/jnn5Nb29P4cXXwalhHCmhjVR5xYqdg4P3xQvMWUj89F4iz6yMebTch1eALGfUV2RShbxGG4TV+2TyBHTH6tIuoqbGjN+GcM9jNVRws8z4lS1naRtxR1flC+3ZVqHLA0gWNvUZsmYoRFnwPZFrc5Jmb4GKxz8B9RSxdU/QMPgP/pFm79OXwaHd6cl1PN/IhGBMC0Tg+TdDtQie5A5M4+l7iLOgJcy1wiVOZuo1N96dDQlpFjaGuaLjvkGgOvjPuZor/eEef+fZUm3ur/OLwFWGnzrYENQxhbyTrgp79X5V4695SbsyNjZHppQSlGRXG8WpRS0wm/R8D6hP2uZ/yTQe+kNf1El/2L9/PC9lPFVeYm9ZAsMZ89Y3EZW6GDmlP9SJtHBYNmEKGCSC30Ph8RCtoz0aqR7MAOfWvscKZtXUgZgxm02wf/aMoOwMFCYV63OAQYwovHSqgS8l1MgZbuMRQbkxU+ZzQa6JbdFUR0nTGQAHt62ZyAk+Hk9SmrAchFDmEmJn12LDLh46omqXwO2i9g8JpsfyufqlOqxs3T6g5cIt87ykvscHGhhPyvFZC+30pu7gd1zijJLMkWb9Pko1UIXqsOHCEAzHwA/Oix8Wu17eTeM4w=
   HEROKU_API_PASSWORD:
-    secure: pM77RBgG322Uhr2tJdY7ChRz/LL75UwD6/Ad+1cwJtsESClcJR4044iiGOh5xYYIaJCtQk5hM6tGYtGWbJGJahZ8InTWSAUiVEhiQ/qHvxU9XXwDwFd1f6y9RVElE4PNhweKzXQC7xKa1JCe1RyqczePd4Ecf1MX4BlgYyecD6MNPixo92p1m/wGpuphaRedBPCWmnC2zc5I9meyxj1PSxFuj5n7gjoDUq29fX+fU7AHTsZvIOu7qYCtBATcu7E16RKk0mxPGwdN0HIm+6WaAUL5hYU3Orb1SoV3A2s/CsMzcOJduL9qKvpH4nyvOALn8DYx+k0lQzkLnC1QcF0il5Q1stiek8ba5k8RX49S5ZmFOBXLwK2NoPJq+Sqabo3Ry+tQEu9jY42WLk/RbXUaJyzzcQNgKL0a5ulUwemXI9XvE9Nb/EtTPS7zMb0O8SI7vcgs8zCw/H764fYWRxPThSy41QBMeHa6gJi+JnPoplp6/n9zSCdZK7prFs13N0dHB+klAg8UHNEwQC9mWnynxy6+xuFmAHuZs54YGSyUR0U/n5Q/rQZliOUgTWspStDBwben7xdVYXT+ISffy99WxmkTfHO8UgNPFI7gI91M0wqk/lYfjY6IzrbVS/CjOuJdDD49LykCNbpFbbRJyV9eM719giQNqGmEmfwghzmxsXA=    
-     
+    secure: pM77RBgG322Uhr2tJdY7ChRz/LL75UwD6/Ad+1cwJtsESClcJR4044iiGOh5xYYIaJCtQk5hM6tGYtGWbJGJahZ8InTWSAUiVEhiQ/qHvxU9XXwDwFd1f6y9RVElE4PNhweKzXQC7xKa1JCe1RyqczePd4Ecf1MX4BlgYyecD6MNPixo92p1m/wGpuphaRedBPCWmnC2zc5I9meyxj1PSxFuj5n7gjoDUq29fX+fU7AHTsZvIOu7qYCtBATcu7E16RKk0mxPGwdN0HIm+6WaAUL5hYU3Orb1SoV3A2s/CsMzcOJduL9qKvpH4nyvOALn8DYx+k0lQzkLnC1QcF0il5Q1stiek8ba5k8RX49S5ZmFOBXLwK2NoPJq+Sqabo3Ry+tQEu9jY42WLk/RbXUaJyzzcQNgKL0a5ulUwemXI9XvE9Nb/EtTPS7zMb0O8SI7vcgs8zCw/H764fYWRxPThSy41QBMeHa6gJi+JnPoplp6/n9zSCdZK7prFs13N0dHB+klAg8UHNEwQC9mWnynxy6+xuFmAHuZs54YGSyUR0U/n5Q/rQZliOUgTWspStDBwben7xdVYXT+ISffy99WxmkTfHO8UgNPFI7gI91M0wqk/lYfjY6IzrbVS/CjOuJdDD49LykCNbpFbbRJyV9eM719giQNqGmEmfwghzmxsXA=         
 script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 - stage: build
 - docker pull olutiab/my-heroku-build
 - docker build --target test --tag my-test-image .
-
 - stage: test
 - docker run my-test-image tests/test_view_model.py
 - docker run my-test-image tests/test_integration.py
 - docker run -e TRELLO_API_KEY -e TRELLO_API_TOKEN my-test-image tests/test_selenium.py
-
 - stage: production
 - docker build --target production --tag olutiab/my-heroku-build .
-
 - docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
 - docker tag olutiab/my-heroku-build registry.heroku.com/olutiab-todo-app/web
 - docker push registry.heroku.com/olutiab-todo-app/web
-
 deploy:
   provider: script
   script: bash scripts/deploy.sh production $TRAVIS_TAG
   on:
     tags: true
     all_branches: true
-
       - docker push registry.heroku.com/olutiab-todo-app/web 
       - heroku container:release web --app olutiab-todo-app   
 notifications:
