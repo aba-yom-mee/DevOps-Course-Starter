@@ -25,8 +25,9 @@ deploy:
   skip_cleanup: true
   script: bash scripts/deploy.sh production
   on:
-  tags: true
-  all_branches: true
+    tags: true
+    all_branches: true
+
 notifications:
   slack:
     rooms:
