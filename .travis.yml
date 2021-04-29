@@ -15,13 +15,18 @@ env:
 script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 # - docker pull olutiab/my-heroku-build
+# - docker pull olutiabolutiab/olutiab-todo-app
 - docker build --target test --tag my-test-image .
 - docker run my-test-image tests/test_view_model.py
 - docker run my-test-image tests/test_integration.py
 - docker run -e TRELLO_API_KEY -e TRELLO_API_TOKEN my-test-image tests/test_selenium.py
 deploy:
   provider: script
+  skip_cleanup: true
   script: bash scripts/deploy.sh production
+  on:
+  tags: true
+  all_branches: true
 notifications:
   slack:
     rooms:
