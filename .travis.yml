@@ -28,6 +28,7 @@ before_deploy:
   - git tag $TRAVIS_TAG
 deploy:
   provider: script
+  api_key:
   tag_name: $TRAVIS_TAG
   target_commitish: $TRAVIS_COMMIT
   name: $TRAVIS_TAG
