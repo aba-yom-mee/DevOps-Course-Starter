@@ -14,8 +14,7 @@ env:
     secure: pM77RBgG322Uhr2tJdY7ChRz/LL75UwD6/Ad+1cwJtsESClcJR4044iiGOh5xYYIaJCtQk5hM6tGYtGWbJGJahZ8InTWSAUiVEhiQ/qHvxU9XXwDwFd1f6y9RVElE4PNhweKzXQC7xKa1JCe1RyqczePd4Ecf1MX4BlgYyecD6MNPixo92p1m/wGpuphaRedBPCWmnC2zc5I9meyxj1PSxFuj5n7gjoDUq29fX+fU7AHTsZvIOu7qYCtBATcu7E16RKk0mxPGwdN0HIm+6WaAUL5hYU3Orb1SoV3A2s/CsMzcOJduL9qKvpH4nyvOALn8DYx+k0lQzkLnC1QcF0il5Q1stiek8ba5k8RX49S5ZmFOBXLwK2NoPJq+Sqabo3Ry+tQEu9jY42WLk/RbXUaJyzzcQNgKL0a5ulUwemXI9XvE9Nb/EtTPS7zMb0O8SI7vcgs8zCw/H764fYWRxPThSy41QBMeHa6gJi+JnPoplp6/n9zSCdZK7prFs13N0dHB+klAg8UHNEwQC9mWnynxy6+xuFmAHuZs54YGSyUR0U/n5Q/rQZliOUgTWspStDBwben7xdVYXT+ISffy99WxmkTfHO8UgNPFI7gI91M0wqk/lYfjY6IzrbVS/CjOuJdDD49LykCNbpFbbRJyV9eM719giQNqGmEmfwghzmxsXA=
 script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-# - docker pull olutiab/my-heroku-build
-# - docker pull olutiabolutiab/olutiab-todo-app
+
 - docker build --target test --tag my-test-image .
 - docker run my-test-image tests/test_view_model.py
 - docker run my-test-image tests/test_integration.py
