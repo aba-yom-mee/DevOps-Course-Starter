@@ -26,7 +26,7 @@ deploy:
 
   overwrite: true
   skip_cleanup: true
-  script: bash scripts/deploy.sh production
+  script: bash scripts/deploy.sh 
   on:
     all_branches: true
 
