@@ -31,6 +31,7 @@ ENTRYPOINT ./entry_point.sh
 FROM base as development
 # Configure for local development
 ENV FLASK_ENV=development
+ENV PORT=80 
 ENTRYPOINT ["poetry", "run", "flask", "run"]
 CMD ["--host", "0.0.0.0"]
 EXPOSE 5000
